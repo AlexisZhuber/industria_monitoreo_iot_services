@@ -24,7 +24,7 @@ services:
       - emqx
       - mongo
 
-    command: sh -c "echo 'delaying 30 seconds' && sleep 30 && npm run build && sleep 30  && npm run start"
+    command: sh -c "echo 'delaying 30 seconds' && sleep 30 && npm run build && npm run start"
     #command: sh -c "npm install"
 
   mongo:
@@ -60,19 +60,17 @@ services:
       - mongo
 
     extra_hosts:
-      - "localhost:192.168.0.6"
+      - "localhost:192.168.100.17"
 
     environment:
-      EMQX_NAME: ioticos-gl
+
+      EMQX_NAME: Industria-Alexis
       EMQX_HOST: 127.0.0.1
 
       TZ: "${TZ}"
 
       # DEFAULT DASH PASS
       EMQX_DASHBOARD__DEFAULT_USER__PASSWORD: "${EMQX_DEFAULT_USER_PASSWORD}"
-
-      # DEFAULT APP SECRET
-      EMQX_MANAGEMENT__DEFAULT_APPLICATION__SECRET: "${EMQX_DEFAULT_APPLICATION_SECRET}"
 
       EMQX_ALLOW_ANONYMOUS: "false"
       EMQX_NOMATCH: "deny"
@@ -89,7 +87,7 @@ services:
       EMQX_AUTH__MONGO__PASSWORD: "${MONGO_PASSWORD}"
       EMQX_AUTH__MONGO__AUTH_SOURCE: admin
 
-      EMQX_AUTH__MONGO__DATABASE: "ioticos_god_level"
+      EMQX_AUTH__MONGO__DATABASE: "iot"
       EMQX_AUTH__MONGO__AUTH_QUERY__COLLECTION: "emqxauthrules"
 
       EMQX_AUTH__MONGO__SUPER_QUERY__COLLECTION: "emqxauthrules"
