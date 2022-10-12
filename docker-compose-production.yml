@@ -14,7 +14,7 @@ services:
     image: "node:14"
     working_dir: /home/node/app
     volumes:
-      - . /app/:/home/node/app
+      - ./app/:/home/node/app
     ports:
       - "3000:3000"
       - "3001:3001"
@@ -58,6 +58,9 @@ services:
   
     links:
       - mongo
+
+    extra_hosts:
+      - "localhost:192.168.100.17"
 
     environment:
 
